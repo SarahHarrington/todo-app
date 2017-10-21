@@ -1,36 +1,49 @@
 console.log('js loaded');
 
-
-
 $(document).ready(readyNow);
 
 function readyNow() {
     console.log('jquery loaded');
-    $('.addTask').on('click', addToList)
+    $('.addTask').on('click', addToList);
+    getToDos();
 }
 
 function addToList(e) {
     e.preventDefault();
     var task = $('.task').val();
     var dateDue = $('.dateDue').val();
-    var complete = false;
     
     var toDo = {
         task: task,
         dateDue: dateDue,
-        complete: complete
     }
 
     $.ajax({
         type: 'POST',
-        url: '/todo',
+        url: '/todos',
         data: toDo
     })
     .done(function(response){
         console.log('response', response);
         //will need to add a refresh
+        getToDos();
     })
     .fail(function(error){
         console.log('error', error);
+    })
+}
+
+function getToDos() {
+    $.ajax({
+        type: 'GET',
+        url: '/todos'
+    }).done(function(response){
+        console.log('response', response);
+        var toDos = response;
+        console.log('toDos response', toDos);
+        
+    }).fail(function(error){
+        console.log('error', error);
+        
     })
 }
