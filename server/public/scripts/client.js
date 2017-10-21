@@ -74,8 +74,8 @@ function markComplete() {
 
     $.ajax({
         type: 'PUT',
-        url: '/completetodo',
-        data: dateComplete //UPDATE THIS
+        url: '/completetodo' + editingId,
+        //data: dateComplete //UPDATE THIS
     })
     .done(function(response){
         console.log('response', response);

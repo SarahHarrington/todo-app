@@ -58,6 +58,6 @@ router.get('/', function(req, res){
     })//pool connection
 })
 
-router.put('/')
+router.put('/completetodo/:id')
 
 module.exports = router;
