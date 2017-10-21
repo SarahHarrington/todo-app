@@ -39,7 +39,7 @@ router.post('/', function (req, res) {
 
 //get for todos not completed
 router.get('/', function(req, res){
-    pool.connect(function(errorConnectingToDb, db, done){
+    pool.connect(function(errorConnectingToDb, db, done){ //pool connection
         if(errorConnectingToDb) {
             console.log('error connecting to db', errorConnectingToDb);
             res.sendStatus(500);
@@ -55,9 +55,9 @@ router.get('/', function(req, res){
                 }
             })
         }
-    })
+    })//pool connection
 })
 
-
+router.put('/')
 
 module.exports = router;
