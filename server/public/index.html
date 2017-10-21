@@ -12,7 +12,72 @@
         <script src="scripts/client.js"></script>
     </head>
     <body>
-       To do App
-        
+       <div class="container"><!--container-->
+        <div class="row"><!-- header row -->
+            <div class="col-xs-12 header"><!-- header -->
+                To Do List
+            </div><!--header -->
+        </div><!-- header row -->
+
+        <div class="row"><!-- to do inputs -->
+            <div class="form-group">
+                <form action="">
+                    <input type="text" placeholder="Enter Task Here">
+                    <input type="date" placeholder="Due Date">
+                    <button class="btn btn-default" type="submit">Add Task</button>
+                </form>
+        </div><!-- end to do inputs -->
+
+        <div class="row"><!-- To do Area -->
+            <div>
+                Things to do:
+                <table class="table"> <!--to do table-->
+                    <tr>
+                        <th>checkbox</th>
+                        <th>To Do</th>
+                        <th>Due Date</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                    </tr>
+                    <tr><!-- Placeholder table text -->
+                        <td><input type="checkbox" name="" class="checkbox"></td>
+                        <td>Thing to do</td>
+                        <td>Date Due</td>
+                        <td>Edit button</td>
+                        <td>Delete button</td>
+                    </tr>
+                </table><!--to do table-->
+            </div>
+        </div><!-- end to do area-->
+
+        <div class="row"><!-- Completed Area -->
+            <div>
+                This stuff is done! Go you!
+                <button class="btn btn-default">Delete All</button>
+                <table class="table"><!--completed table-->
+                    <tr>
+                        <th>checkbox</th>
+                        <th>To Do</th>
+                        <th>Due Date</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                    </tr>
+                    <tr>
+                        <!-- Placeholder table text -->
+                        <td>
+                            <input type="checkbox" name="" class="checkbox">
+                        </td>
+                        <td>Thing to do</td>
+                        <td>Date Due</td>
+                        <td>Edit button</td>
+                        <td>Delete button</td>
+                    </tr>
+                </table>
+                <!--end completed table-->
+            </div>
+        </div>
+        <!-- end completed area-->
+
+       </div><!-- end container -->
     </body>
 </html>
