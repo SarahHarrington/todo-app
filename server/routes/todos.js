@@ -44,7 +44,7 @@ router.get('/', function(req, res){
             console.log('error connecting to db', errorConnectingToDb);
             res.sendStatus(500);
         } else {
-            var queryText = 'SELECT * FROM "todos" WHERE "complete" is null;';
+            var queryText = 'SELECT * FROM "todos" WHERE "complete" is null ORDER BY "date" ASC;';
             db.query(queryText, function(errorMakingQuery, result){
                 done();
                 if(errorMakingQuery) {
@@ -58,6 +58,31 @@ router.get('/', function(req, res){
     })//pool connection
 })
 
-router.put('/completetodo/:id')
+router.put('/completetodo/:id', function(req, res){
+    var completeToDoId = req.params.id;
+
+    pool.connect(function (errorConnectingToDb, db, done) {
+        if (errorConnectingToDb) {
+            // There was an error and no connection was made
+            console.log('Error connecting', errorConnectingToDb);
+            res.sendStatus(500);
+        } else {
+            // We connected to the db!!!!! pool -1
+            var queryText = 'UPDATE "todos" SET "complete" = $1 WHERE "id" = $2;';
+            db.query(queryText, ["NOW", completeToDoId], function (errorMakingQuery, result) {
+                // We have received an error or result at this point
+                done(); // pool +1
+                if (errorMakingQuery) {
+                    console.log('Error making query', errorMakingQuery);
+                    res.sendStatus(500);
+                } else {
+                    // Send back success!
+                    res.sendStatus(201);
+                }
+            }); // END QUERY
+        }
+    }); // END POOL
+})
+
 
 module.exports = router;

@@ -19,13 +19,12 @@
             </div><!--header -->
         </div><!-- header row -->
 
-        <div class="row"><!-- to do inputs -->
-            <div class="form-group">
-                <form action="">
-                    <input type="text" class="task toDoIn" placeholder="Enter Task Here">
-                    <input type="datetime-local" class="dateDue toDoIn" placeholder="Due Date">
-                    <button class="btn btn-default addTask">Add Task</button>
-                </form>
+        <div class="row"><!-- to do inputs -->     
+            <form class="form-inline">
+                <input type="text" class="task toDoIn" placeholder="Enter Task Here">
+                <input type="datetime-local" class="dateDue" placeholder="Due Date">
+                <button class="btn btn-default addTask">Add Task</button>
+            </form>
         </div><!-- end to do inputs -->
 
         <div class="row"><!-- To do Area -->
@@ -54,18 +53,14 @@
                     <tr>
                         <th>checkbox</th>
                         <th>To Do</th>
+                        <th>Due Date</th>
                         <th>Edit</th>
                         <th>Delete</th>
                     </tr>
-                    <tr>
+                    <tbody class="completeToDos">
                         <!-- Placeholder table text -->
-                        <td>
-                            <input type="checkbox" name="" class="checkbox">
-                        </td>
-                        <td>Thing to do</td>
-                        <td>Edit button</td>
-                        <td>Delete button</td>
-                    </tr>
+                        
+                    </tbody>
                 </table>
                 <!--end completed table-->
             </div>
