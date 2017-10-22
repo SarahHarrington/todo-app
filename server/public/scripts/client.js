@@ -116,8 +116,8 @@ function appendCompleteToDos(array) {
         var $tr = $('<tr></tr>');
         $tr.data('toDo', toDo);
         $tr.append('<td><input type="checkbox" checked class="completeCheckBox" data-id="' + toDo.id + '"></td>');
-        $tr.append('<td class="hideItem">' + toDo.todo + '<input class="showItem toDoText" type="text"></td>');
-        $tr.append('<td class="hideItem newDate">' + toDo.date + '<input class="showItem toDoDate" type="datetime-local"</td>');
+        $tr.append('<td class="hideItem newBox">' + toDo.todo + '</td><td class="showItem"><input class="toDoText" type="text"></td>');
+        $tr.append('<td class="hideItem newDate">' + toDo.date + '</td><td class="showItem"><input class="toDoDate" type="datetime-local"</td>');
         $tr.append('<td><button class="edit" data-id="' + toDo.id + '">Edit</button><button class="save">Save</button></td>');
         $tr.append('<td><button class="delete" data-id="' + toDo.id + '">Delete</button></td>');
         $('.completeToDos').append($tr);
@@ -149,9 +149,9 @@ function editToDo() {
     $(this).parent().siblings('.showItem').show();
     var existingData = $(this).closest('tr').data('toDo');
     console.log('existing Data', existingData);
+    $(this).parent().siblings().children('.toDoText').val(existingData.todo);
+    $(this).parent().siblings().children('.toDoDate').val(existingData.date);
     
-    $(this).parent().siblings('.toDoText').val(existingData.todo);
-    $(this).parent().siblings('.toDoDate').val(existingData.date);
 }
 
 function saveEdit() {
@@ -160,4 +160,13 @@ function saveEdit() {
     $(this).siblings('.edit').show();
     $(this).parent().siblings('.hideItem').show();
     $(this).parent().siblings('.showItem').hide();
+
+    var updatedToDo = $(this).parent().siblings().children('.toDoText').val();
+    var updatedDueDate = $(this).parent().siblings().children('.toDoDate').val();
+
+    var updatedObject = {
+        todo: updatedToDo,
+        date: updatedDueDate
+    }
+    
 }
