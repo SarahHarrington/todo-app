@@ -9,3 +9,11 @@
 .header {
     height: 100px;
 }
+
+.showItem {
+    display: none;
+}
+
+.save {
+    display: none;
+}

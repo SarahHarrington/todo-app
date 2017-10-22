@@ -10,6 +10,9 @@ function readyNow() {
     $('.addTask').on('click', addToList);
     $('.newToDos').on('click', '.emptyCheckBox', markComplete);
     $('.completeToDos').on('click', '.completeCheckBox', markNew);
+    $('.toDoItems').on('click', '.edit', editToDo);
+    $('.toDoItems').on('click', '.save', saveEdit);
+    
     //functions for displaying items on page load
     getToDos();
     getCompleteToDos();
@@ -61,14 +64,14 @@ function getToDos() {
 function appendNewToDos(array) {
     $('.newToDos').empty();
     for(var i = 0; i < array.length; i++) {
-        newToDo = array[i];
+        toDo = array[i];
         var $tr = $('<tr></tr>');
-        $tr.data('newToDo', newToDo);
-        $tr.append('<td><input type="checkbox" class="emptyCheckBox" data-id="' + newToDo.id + '"></td>');
-        $tr.append('<td>' + newToDo.todo + '</td>');
-        $tr.append('<td>' + newToDo.date + '</td>');
-        $tr.append('<td><button class="edit" data-id="' + newToDo.id + '">Edit</button></td>');
-        $tr.append('<td><button class="delete" data-id="' + newToDo.id + '">Delete</button></td>');
+        $tr.data('toDo', toDo);
+        $tr.append('<td><input type="checkbox" class="emptyCheckBox" data-id="' + toDo.id + '"></td>');
+        $tr.append('<td class="hideItem newBox">' + toDo.todo + '</td><td class="showItem"><input class="toDoText" type="text"></td>');
+        $tr.append('<td class="hideItem newDate">' + toDo.date + '</td><td class="showItem"><input class="toDoDate" type="datetime-local"</td>');
+        $tr.append('<td><button class="edit" data-id="' + toDo.id + '">Edit</button><button class="save">Save</button></td>');
+        $tr.append('<td><button class="delete" data-id="' + toDo.id + '">Delete</button></td>');
         $('.newToDos').append($tr);
     }
 }
@@ -109,14 +112,14 @@ function getCompleteToDos() {
 function appendCompleteToDos(array) {
     $('.completeToDos').empty();
     for (var i = 0; i < array.length; i++) {
-        completeToDos = array[i];
+        toDo = array[i];
         var $tr = $('<tr></tr>');
-        $tr.data('completeToDos', completeToDos);
-        $tr.append('<td><input type="checkbox" checked class="completeCheckBox" data-id="' + completeToDos.id + '"></td>');
-        $tr.append('<td>' + completeToDos.todo + '</td>');
-        $tr.append('<td>' + completeToDos.date + '</td>');
-        $tr.append('<td><button class="edit" data-id="' + completeToDos.id + '">Edit</button></td>');
-        $tr.append('<td><button class="delete" data-id="' + completeToDos.id + '">Delete</button></td>');
+        $tr.data('toDo', toDo);
+        $tr.append('<td><input type="checkbox" checked class="completeCheckBox" data-id="' + toDo.id + '"></td>');
+        $tr.append('<td class="hideItem">' + toDo.todo + '<input class="showItem toDoText" type="text"></td>');
+        $tr.append('<td class="hideItem newDate">' + toDo.date + '<input class="showItem toDoDate" type="datetime-local"</td>');
+        $tr.append('<td><button class="edit" data-id="' + toDo.id + '">Edit</button><button class="save">Save</button></td>');
+        $tr.append('<td><button class="delete" data-id="' + toDo.id + '">Delete</button></td>');
         $('.completeToDos').append($tr);
     }
 }
@@ -136,4 +139,25 @@ function markNew() {
         .fail(function (error) {
             console.log('error', error);
         })
+}
+
+function editToDo() {
+    console.log('edit clicked');
+    $(this).hide();
+    $(this).siblings('.save').show();
+    $(this).parent().siblings('.hideItem').hide();
+    $(this).parent().siblings('.showItem').show();
+    var existingData = $(this).closest('tr').data('toDo');
+    console.log('existing Data', existingData);
+    
+    $(this).parent().siblings('.toDoText').val(existingData.todo);
+    $(this).parent().siblings('.toDoDate').val(existingData.date);
+}
+
+function saveEdit() {
+    console.log('save edit clicked');
+    $(this).hide();
+    $(this).siblings('.edit').show();
+    $(this).parent().siblings('.hideItem').show();
+    $(this).parent().siblings('.showItem').hide();
 }
