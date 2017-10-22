@@ -12,6 +12,7 @@ function readyNow() {
     $('.completeToDos').on('click', '.completeCheckBox', markNew);
     $('.toDoItems').on('click', '.edit', editToDo);
     $('.toDoItems').on('click', '.save', saveEdit);
+    $('.toDoItems').on('click', '.delete', deleteToDo);
     
     //functions for displaying items on page load
     getToDos();
@@ -23,7 +24,7 @@ function addToList(e) {
     e.preventDefault();
     var task = $('.task').val();
     var dateDue = $('.dateDue').val();
-    
+
     var toDo = {
         task: task,
         dateDue: dateDue,
@@ -168,5 +169,39 @@ function saveEdit() {
         todo: updatedToDo,
         date: updatedDueDate
     }
+
+    $.ajax({
+        type: 'PUT',
+        url: 'edit/' + editingId,
+        data: updatedObject
+    })
+        .done(function (response) {
+            console.log('response', response);
+            getToDos();
+            getCompleteToDos();
+        })
+        .fail(function (error) {
+            console.log('error', error);
+        })
+}
+
+//deletes indvidual to dos
+function deleteToDo() {
+    console.log('delete clicked');
+    var deleteId = $(this).data('id');
+
+    $.ajax({
+        method: 'DELETE',
+        url: '/delete/' + deleteId
+    })
+        .done(function (response) {
+            console.log('response', response);
+            getToDos();
+            getCompleteToDos();
+        })
+        .fail(function (error) {
+            alert('Something went wrong.');
+        })
     
 }
+
