@@ -7,8 +7,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="vendors/bootstrap-3.3.7-dist/css/bootstrap-theme.min.css">
         <link rel="stylesheet" href="vendors/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Pacifico|Roboto" rel="stylesheet">
         <link rel="stylesheet" href="styles/style.css">
         <script src="vendors/jquery-3.2.1.min.js"></script>
+        <script src="scripts/localstring.js"></script>
         <script src="scripts/client.js"></script>
         <script src="scripts/gettodos.js"></script>
     </head>
@@ -20,24 +22,24 @@
             </div><!--header -->
         </div><!-- header row -->
 
-        <div class="row"><!-- to do inputs -->     
+        <div class="row inputs"><!-- to do inputs -->     
             <form class="form-inline">
-                <input type="text" class="task toDoIn" placeholder="Enter Task Here">
-                <input type="datetime-local" class="dateDue" placeholder="Due Date">
-                <button class="btn btn-default addTask">Add Task</button>
+                <input type="text" class="task toDoIn taskInput" placeholder="Enter New To Do Here">
+                <input type="datetime-local" class="dateDue taskInput" placeholder="Due Date">
+                <button class="btn btn-default addTask">Add</button>
             </form>
         </div><!-- end to do inputs -->
 
-        <div class="row"><!-- To do Area -->
+        <div class="row todos"><!-- To do Area -->
             <div>
                 Things to do:
                 <table class="table"> <!--to do table-->
                     <tr>
-                        <th>checkbox</th>
-                        <th>To Do</th>
-                        <th>Due Date</th>
-                        <th>Edit</th>
-                        <th>Delete</th>
+                        <th class="col-xs-1"></th>
+                        <th class="col-xs-7">To Do</th>
+                        <th class="col-xs-2">Due Date</th>
+                        <th class="col-xs-1">Edit</th>
+                        <th class="col-xs-1">Delete</th>
                     </tr>
                     <tbody class="newToDos toDoItems">
                        
@@ -46,17 +48,17 @@
             </div>
         </div><!-- end to do area-->
 
-        <div class="row"><!-- Completed Area -->
+        <div class="row todos"><!-- Completed Area -->
             <div>
                 This stuff is done! Go you!
-                <button class="btn btn-default">Delete All</button>
+                <button class="btn btn-default deleteAll">Delete All</button>
                 <table class="table"><!--completed table-->
                     <tr>
-                        <th>checkbox</th>
-                        <th>To Do</th>
-                        <th>Due Date</th>
-                        <th>Edit</th>
-                        <th>Delete</th>
+                        <th class="col-xs-1"></th>
+                        <th class="col-xs-7">To Do</th>
+                        <th class="col-xs-2">Due Date</th>
+                        <th class="col-xs-1">Edit</th>
+                        <th class="col-xs-1">Delete</th>
                     </tr>
                     <tbody class="completeToDos toDoItems">
                         <!-- Placeholder table text -->

@@ -1,5 +1,12 @@
+body {
+    background-image: url("https://images.unsplash.com/photo-1495854544774-960863c76ed3?w=1355");
+    background-repeat: no-repeat;
+    font-family: 'Roboto', sans-serif;
+    
+}
+
 .toDoIn {
-    width: 500px;
+    width: 600px;
 }
 
 .dateDue {
@@ -7,7 +14,8 @@
 }
 
 .header {
-    height: 100px;
+    height: auto;
+    background-color: #F06060;
 }
 
 .showItem {
@@ -17,3 +25,26 @@
 .save {
     display: none;
 }
+
+.header {
+    font-size: 60px;
+    font-family: 'Pacifico', cursive;
+}
+
+.btn {
+    height: 30px;
+    width: 80px;
+}
+
+.inputs {
+    margin-top: 20px;
+}
+
+.todos {
+    margin-top: 20px;
+}
+
+.container {
+    background-color: #FF6666;
+}
+

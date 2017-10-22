@@ -13,6 +13,7 @@ function readyNow() {
     $('.toDoItems').on('click', '.edit', editToDo);
     $('.toDoItems').on('click', '.save', saveEdit);
     $('.toDoItems').on('click', '.delete', deleteToDo);
+    $('.deleteAll').on('click', deleteAll);
     
     //functions for displaying items on page load
     getToDos();
@@ -21,15 +22,15 @@ function readyNow() {
 
 //posts new to do 
 function addToList(e) {
-    e.preventDefault();
+    e.preventDefault(); //prevents page reload on click of add task
     var task = $('.task').val();
     var dateDue = $('.dateDue').val();
-
-    var toDo = {
+    //object to send the server and database
+    var toDo = { 
         task: task,
         dateDue: dateDue,
     }
-
+    $('.taskInput').val('');
     $.ajax({
         type: 'POST',
         url: '/todos',
@@ -45,9 +46,7 @@ function addToList(e) {
     })
 }
 
-
-
-//marks items as complete and sends to server with now stamp
+//marks items as complete and
 function markComplete() {
     editingId = $(this).data('id');
     $.ajax({
@@ -65,8 +64,7 @@ function markComplete() {
     })
 }
 
-
-
+//marks the items as not complete
 function markNew() {
     console.log('uncheck clicked');
     editingId = $(this).data('id');
@@ -84,6 +82,7 @@ function markNew() {
         })
 }
 
+//starts inline editing for to do
 function editToDo() {
     console.log('edit clicked');
     $(this).hide();
@@ -91,26 +90,32 @@ function editToDo() {
     $(this).parent().siblings('.hideItem').hide();
     $(this).parent().siblings('.showItem').show();
     var existingData = $(this).closest('tr').data('toDo');
+    var existingDate = existingData.date;
+      
     console.log('existing Data', existingData);
+    console.log('existing Date', existingDate);
+    
     $(this).parent().siblings().children('.toDoText').val(existingData.todo);
-    $(this).parent().siblings().children('.toDoDate').val(existingData.date);
+    //$(this).parent().siblings().children('.toDoDate').value = existingDate;
     
 }
 
+//collects updated to do and sends to server
 function saveEdit() {
     console.log('save edit clicked');
     $(this).hide();
     $(this).siblings('.edit').show();
     $(this).parent().siblings('.hideItem').show();
     $(this).parent().siblings('.showItem').hide();
-
+    var editingId = $(this).data('id');
     var updatedToDo = $(this).parent().siblings().children('.toDoText').val();
     var updatedDueDate = $(this).parent().siblings().children('.toDoDate').val();
-
     var updatedObject = {
         todo: updatedToDo,
         date: updatedDueDate
     }
+
+    console.log('updated object', updatedObject);
 
     $.ajax({
         type: 'PUT',
@@ -147,3 +152,22 @@ function deleteToDo() {
     
 }
 
+//deletes all to dos
+function deleteAll() {
+    var deleteAll = confirm('Are you sure you want to delete all completed tasks?');
+    if (deleteAll === true) {
+    
+        $.ajax({
+            method: 'DELETE',
+            url: '/todos/all'
+        })
+        .done(function(response){
+            console.log('response', response);
+            getToDos();
+            getCompleteToDos();
+        })
+        .fail(function(error){
+            console.log('error', error);
+        })    
+    }
+}    
