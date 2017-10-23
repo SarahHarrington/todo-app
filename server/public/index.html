@@ -16,9 +16,9 @@
     </head>
     <body>
        <div class="container"><!--container-->
-        <div class="row"><!-- header row -->
-            <div class="col-xs-12 header"><!-- header -->
-                To Do List
+        <div class="row" id="headerRow"><!-- header row -->
+            <div class="header col-xs-12"><!-- header -->
+                <h1>To Do List<small>  Getting stuff done...</small></h1>
             </div><!--header -->
         </div><!-- header row -->
 
@@ -32,14 +32,14 @@
 
         <div class="row todos"><!-- To do Area -->
             <div>
-                Things to do:
+                <p id="tableTopper">Things to do:</p>
                 <table class="table"> <!--to do table-->
                     <tr>
-                        <th class="col-xs-1"></th>
-                        <th class="col-xs-7">To Do</th>
-                        <th class="col-xs-2">Due Date</th>
-                        <th class="col-xs-1">Edit</th>
-                        <th class="col-xs-1">Delete</th>
+                        <th class="th col-xs-1"></th>
+                        <th class="th col-xs-7">To Do</th>
+                        <th class="th col-xs-2">Due Date</th>
+                        <th class="th col-xs-1">Edit</th>
+                        <th class="th col-xs-1">Delete</th>
                     </tr>
                     <tbody class="newToDos toDoItems">
                        
@@ -48,28 +48,26 @@
             </div>
         </div><!-- end to do area-->
 
-        <div class="row todos"><!-- Completed Area -->
-            <div>
-                This stuff is done! Go you!
+        <div class="row"><!-- Completed Area -->
+            <div class="todos">
+            <p id="tableTopper">This stuff is done! Go you!</p>
                 <button class="btn btn-default deleteAll">Delete All</button>
                 <table class="table"><!--completed table-->
                     <tr>
-                        <th class="col-xs-1"></th>
-                        <th class="col-xs-7">To Do</th>
-                        <th class="col-xs-2">Due Date</th>
-                        <th class="col-xs-1">Edit</th>
-                        <th class="col-xs-1">Delete</th>
+                        <th class="th col-xs-1"></th>
+                        <th class="th col-xs-7">To Do</th>
+                        <th class="th col-xs-2">Due Date</th>
+                        <th class="th col-xs-1">Edit</th>
+                        <th class="th col-xs-1">Delete</th>
                     </tr>
                     <tbody class="completeToDos toDoItems">
-                        <!-- Placeholder table text -->
+                        <!-- Appended items go in here -->
                         
                     </tbody>
                 </table>
                 <!--end completed table-->
-            </div>
-        </div>
-        <!-- end completed area-->
-
+            </div><!-- end table header -->
+        </div><!-- end completed area -->
        </div><!-- end container -->
     </body>
 </html>

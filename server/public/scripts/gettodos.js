@@ -62,15 +62,16 @@ function appendCompleteToDos(array) {
         var time = new Date(toDo.date).toLocaleTimeString(); //sets time to more readable format
         var isoTime = new Date(toDo.date).toLocalISOString();
         var $tr = $('<tr></tr>');
+        var toDoId = toDo.id; 
         var checkBox = $('<td><input type="checkbox" checked class="completeCheckBox" data-id="' 
-            + toDo.id + '"></td>')
+            + toDoId + '"></td>')
         
         $tr.data('toDo', toDo);
         $tr.append(checkBox);
         $tr.append('<td class="hideItem newBox">' + toDo.todo + '</td><td class="showItem"><input class="toDoText" type="text"></td>');
         $tr.append('<td class="hideItem newDate">' + date + '<br>' + time + '</td><td class="showItem"><input class="toDoDate" id="dueDate" type="datetime-local" value="' + isoTime + '"></td>');
-        $tr.append('<td><button class="edit btn btn-default" data-id="' + toDo.id + '">Edit</button><button class="save btn btn-default data-id="' + toDo.id + '">Save</button></td>');
-        $tr.append('<td><button class="delete btn btn-default" data-id="' + toDo.id + '">Delete</button></td>');
+        $tr.append('<td><button class="edit btn btn-default" data-id="' + toDoId + '">Edit</button><button class="save btn btn-default data-id="' + toDo.id + '">Save</button></td>');
+        $tr.append('<td><button class="delete btn btn-default" data-id="' + toDoId + '">Delete</button></td>');
         $('.completeToDos').append($tr);
     }
 }

@@ -1,23 +1,4 @@
-body {
-    background-image: url("https://images.unsplash.com/photo-1495854544774-960863c76ed3?w=1355");
-    background-repeat: no-repeat;
-    font-family: 'Roboto', sans-serif;
-    
-}
-
-.toDoIn {
-    width: 600px;
-}
-
-.dateDue {
-    width: 200px;
-}
-
-.header {
-    height: auto;
-    background-color: #F06060;
-}
-
+/* Classes for edit/save toggle */
 .showItem {
     display: none;
 }
@@ -25,26 +6,70 @@ body {
 .save {
     display: none;
 }
+/* End classes for edit/save toggle */
+
+body {
+    background-image: url("https://images.unsplash.com/photo-1495854544774-960863c76ed3?w=1355");
+    background-repeat: no-repeat;
+    font-family: 'Roboto', sans-serif; 
+}
 
 .header {
+    height: auto;
+    background-color: #5C4B51;
+    color: #F2EBBF;
     font-size: 60px;
     font-family: 'Pacifico', cursive;
 }
 
+#headerRow {
+    opacity: 1.0;
+}
+
+/* Inputs */
+.toDoIn {
+    width: 600px;
+}
+
+.dateDue {
+    width: 200px;
+}
+/* Inputs */
+
 .btn {
     height: 30px;
     width: 80px;
+    background-color: #5C4B51;
+    color: #F2EBBF;
+    font-family: 'Roboto', sans-serif;
+    border: none;
+    text-shadow: none;
 }
 
-.inputs {
+.inputs, .todos {
     margin-top: 20px;
-}
-
-.todos {
-    margin-top: 20px;
+    padding: 10px;
+    opacity: 0.9;
 }
 
 .container {
-    background-color: #FF6666;
+    background-color: rgba(255, 102, 102, 0.95);;
+    opacity: 0.9;
 }
 
+.th {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+#tableTopper {
+  font-family: 'Pacifico', cursive;
+  font-size: 20px;  
+}
+
+.deleteAll{
+    float: right;
+}
+table {
+    border: none;
+}

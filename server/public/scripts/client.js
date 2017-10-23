@@ -1,8 +1,3 @@
-console.log('js loaded');
-
-var newToDo = [];
-var editingId;
-
 $(document).ready(readyNow);
 
 function readyNow() {
@@ -18,13 +13,16 @@ function readyNow() {
     //functions for displaying items on page load
     getToDos();
     getCompleteToDos();
-}
+}//end ready now
 
 //posts new to do 
 function addToList(e) {
     e.preventDefault(); //prevents page reload on click of add task
     var task = $('.task').val();
     var dateDue = $('.dateDue').val();
+
+    console.log('dateDue', dateDue);
+    
     //object to send the server and database
     var toDo = { 
         task: task,
@@ -44,15 +42,14 @@ function addToList(e) {
     .fail(function(error){
         console.log('error', error);
     })
-}
+}//end addToList
 
-//marks items as complete and
+//marks items as complete and sends to server/database
 function markComplete() {
     editingId = $(this).data('id');
     $.ajax({
         type: 'PUT',
         url: 'todos/completetodo/' + editingId,
-        //data: dateComplete //UPDATE THIS
     })
     .done(function(response){
         console.log('response', response);
@@ -62,9 +59,9 @@ function markComplete() {
     .fail(function(error){
         console.log('error', error);  
     })
-}
+}//end markComplete
 
-//marks the items as not complete
+//marks the items as not complete and sends to server/database
 function markNew() {
     console.log('uncheck clicked');
     editingId = $(this).data('id');
@@ -80,7 +77,7 @@ function markNew() {
         .fail(function (error) {
             console.log('error', error);
         })
-}
+}//end markNew
 
 //starts inline editing for to do
 function editToDo() {
@@ -91,14 +88,8 @@ function editToDo() {
     $(this).parent().siblings('.showItem').show();
     var existingData = $(this).closest('tr').data('toDo');
     var existingDate = existingData.date;
-      
-    console.log('existing Data', existingData);
-    console.log('existing Date', existingDate);
-    
     $(this).parent().siblings().children('.toDoText').val(existingData.todo);
-    //$(this).parent().siblings().children('.toDoDate').value = existingDate;
-    
-}
+}//end editToDo
 
 //collects updated to do and sends to server
 function saveEdit() {
@@ -114,22 +105,19 @@ function saveEdit() {
         todo: updatedToDo,
         date: updatedDueDate
     }
-
-    console.log('updated object', updatedObject);
-
     $.ajax({
         type: 'PUT',
         url: 'edit/' + editingId,
         data: updatedObject
     })
-        .done(function (response) {
-            console.log('response', response);
-            getToDos();
-            getCompleteToDos();
-        })
-        .fail(function (error) {
-            console.log('error', error);
-        })
+    .done(function (response) {
+        console.log('response', response);
+        getToDos();
+        getCompleteToDos();
+    })
+    .fail(function (error) {
+        console.log('error', error);
+    })
 }
 
 //deletes indvidual to dos
