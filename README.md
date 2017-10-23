@@ -1,7 +1,6 @@
 # todo-app
 
-CREATE TABLE "todos"(
-    
+CREATE TABLE "todos"( 
     "id" serial primary key,
     "todo" varchar(200),
     "date" timestamp without time zone,
