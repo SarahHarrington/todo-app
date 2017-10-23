@@ -144,7 +144,6 @@ function deleteToDo() {
 function deleteAll() {
     var deleteAll = confirm('Are you sure you want to delete all completed tasks?');
     if (deleteAll === true) {
-    
         $.ajax({
             method: 'DELETE',
             url: '/todos/all'

@@ -7,11 +7,24 @@
     display: none;
 }
 /* End classes for edit/save toggle */
+/* Inputs */
+.toDoIn {
+    width: 600px;
+}
+
+.dateDue {
+    width: 200px;
+}
+/* END Inputs */
 
 body {
     background-image: url("https://images.unsplash.com/photo-1495854544774-960863c76ed3?w=1355");
     background-repeat: no-repeat;
     font-family: 'Roboto', sans-serif; 
+}
+
+.container {
+    background-color: rgba(255, 102, 102, 0.90);;
 }
 
 .header {
@@ -22,19 +35,14 @@ body {
     font-family: 'Pacifico', cursive;
 }
 
-#headerRow {
-    opacity: 1.0;
+.header small {
+    color: #8CBEB2;
+    font-size: 18px;
 }
 
-/* Inputs */
-.toDoIn {
-    width: 600px;
+.inputs {
+    margin: 10px;
 }
-
-.dateDue {
-    width: 200px;
-}
-/* Inputs */
 
 .btn {
     height: 30px;
@@ -46,30 +54,30 @@ body {
     text-shadow: none;
 }
 
-.inputs, .todos {
-    margin-top: 20px;
-    padding: 10px;
-    opacity: 0.9;
+.btn:hover{
+   background-color: #F2EBBF; 
+   color: #5C4B51;
 }
 
-.container {
-    background-color: rgba(255, 102, 102, 0.95);;
-    opacity: 0.9;
+#saveBtn {
+    background-color: #8CBEB2;
+}
+
+#saveBtn:hover {
+    background-color: #F2EBBF;
 }
 
 .th {
     font-weight: bold;
     font-size: 18px;
+    text-align: left;
+}
+
+tr {
+    height: 50px;
 }
 
 #tableTopper {
   font-family: 'Pacifico', cursive;
   font-size: 20px;  
-}
-
-.deleteAll{
-    float: right;
-}
-table {
-    border: none;
 }

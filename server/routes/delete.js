@@ -43,7 +43,7 @@ router.delete('/all', function (req, res) {//connect the data tot he URL
             res.sendStatus(500);
         } else {
             // We connected to the db!!!!! pool -1
-            var queryText = 'DELETE FROM "todos" WHERE "complete" is not null;';
+            var queryText = 'DELETE FROM "todos" WHERE "complete" is not null SORT BY ASC;';
             //[product] because the product id was declared above
             db.query(queryText, function (errorMakingQuery, result) {
                 // We have received an error or result at this point

@@ -18,7 +18,7 @@
        <div class="container"><!--container-->
         <div class="row" id="headerRow"><!-- header row -->
             <div class="header col-xs-12"><!-- header -->
-                <h1>To Do List<small>  Getting stuff done...</small></h1>
+                <h1>To Do List</h1>
             </div><!--header -->
         </div><!-- header row -->
 
@@ -30,9 +30,8 @@
             </form>
         </div><!-- end to do inputs -->
 
-        <div class="row todos"><!-- To do Area -->
-            <div>
-                <p id="tableTopper">Things to do:</p>
+        <div class="row todos"><!-- To do Area --> 
+                <p class="col-xs-12" id="tableTopper">Things to do:</p>
                 <table class="table"> <!--to do table-->
                     <tr>
                         <th class="th col-xs-1"></th>
@@ -42,32 +41,31 @@
                         <th class="th col-xs-1">Delete</th>
                     </tr>
                     <tbody class="newToDos toDoItems">
-                       
+                    <!-- appended items go here -->   
+
                     </tbody>
                 </table><!--to do table-->
-            </div>
         </div><!-- end to do area-->
 
         <div class="row"><!-- Completed Area -->
-            <div class="todos">
-            <p id="tableTopper">This stuff is done! Go you!</p>
-                <button class="btn btn-default deleteAll">Delete All</button>
-                <table class="table"><!--completed table-->
-                    <tr>
-                        <th class="th col-xs-1"></th>
-                        <th class="th col-xs-7">To Do</th>
-                        <th class="th col-xs-2">Due Date</th>
-                        <th class="th col-xs-1">Edit</th>
-                        <th class="th col-xs-1">Delete</th>
-                    </tr>
-                    <tbody class="completeToDos toDoItems">
-                        <!-- Appended items go in here -->
-                        
-                    </tbody>
-                </table>
-                <!--end completed table-->
-            </div><!-- end table header -->
-        </div><!-- end completed area -->
+            <p class="col-xs-10" id="tableTopper">This stuff is done! Go you!</p>
+            <button class="col-xs-2 btn btn-default deleteAll">Delete All</button>
+        </div>
+            <div class="row todos">    
+            <table class="table"><!--completed table-->
+                <tr>
+                    <th class="th col-xs-1"></th>
+                    <th class="th col-xs-7">To Do</th>
+                    <th class="th col-xs-2">Due Date</th>
+                    <th class="th col-xs-1">Edit</th>
+                    <th class="th col-xs-1">Delete</th>
+                </tr>
+                <tbody class="completeToDos toDoItems">
+                    <!-- Appended items go in here -->
+                    
+                </tbody>
+            </table><!--end completed table-->
+            </div><!-- end row to -->
        </div><!-- end container -->
     </body>
 </html>

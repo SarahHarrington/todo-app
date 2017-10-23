@@ -9,7 +9,14 @@ var pool = poolModule;
 //post for initial to do submit
 router.post('/', function (req, res) {
     var toDo = req.body; // This the data we sent
-    console.log(toDo); // Has a name and cost
+    console.log(toDo);
+    //var dueDate = toDo.dateDue;
+    // null on client side shows as 12/31/1969, ran out of time to sort that out
+    // if (toDo.dateDue == "") {
+    //     dueDate = null;
+    // } else {
+    //     dueDate = toDo.dateDue;
+    // }
 
     // Attempt to connect to the database
     pool.connect(function (errorConnectingToDb, db, done) {
@@ -20,7 +27,7 @@ router.post('/', function (req, res) {
         } else {
             // We connected to the db!!!!! pool -1
             var queryText = 'INSERT INTO "todos" ("todo", "date") VALUES ($1, $2);';
-            console.log('queryText', queryText, [toDo.task, toDo.dateDue]);
+            //console.log('queryText', queryText, [toDo.task, dueDate]);
             
             db.query(queryText, [toDo.task, toDo.dateDue], function (errorMakingQuery, result) {
                 // We have received an error or result at this point
