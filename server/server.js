@@ -7,6 +7,7 @@ var todos = require('./routes/todos.js');
 var complete = require('./routes/complete.js');
 var edit = require('./routes/edit.js')
 var deleteToDo = require('./routes/delete.js')
+var deleteAll = require('./routes/deleteall.js')
 
 //app stuff
 app.use(bodyParser.urlencoded({extended: true}));
@@ -16,6 +17,7 @@ app.use('/todos', todos);
 app.use('/complete', complete);
 app.use('/edit', edit);
 app.use('/delete', deleteToDo);
+app.use('/deleteall', deleteAll)
 
 
 app.listen(port, function(){

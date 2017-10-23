@@ -6,9 +6,7 @@ var pg = require('pg');
 var poolModule = require('../modules/pool.js')
 var pool = poolModule;
 
-router.delete('/:id', function (req, res) {//connect the data tot he URL
-    var deleteToDo = req.params.id; // This will be the product ID
-
+router.delete('/', function (req, res) {//connect the data tot he URL
     // Attempt to connect to the database
     pool.connect(function (errorConnectingToDb, db, done) {
         if (errorConnectingToDb) {
@@ -17,9 +15,9 @@ router.delete('/:id', function (req, res) {//connect the data tot he URL
             res.sendStatus(500);
         } else {
             // We connected to the db!!!!! pool -1
-            var queryText = 'DELETE FROM "todos" WHERE "id" = $1;';
+            var queryText = 'DELETE FROM "todos" WHERE "complete" is not null;';
             //[product] because the product id was declared above
-            db.query(queryText, [deleteToDo], function (errorMakingQuery, result) {
+            db.query(queryText, function (errorMakingQuery, result) {
                 // We have received an error or result at this point
                 done(); // pool +1
                 if (errorMakingQuery) {
@@ -33,6 +31,5 @@ router.delete('/:id', function (req, res) {//connect the data tot he URL
         }
     }); // END POOL
 });
-
 
 module.exports = router;
